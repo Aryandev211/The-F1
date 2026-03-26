@@ -7,15 +7,21 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const video = document.getElementById('background-video');
-            video.addEventListener('error', function() {
-                console.log('Video failed to load');
+            video.addEventListener('error', function(e) {
+                console.log('Video failed to load:', e);
                 video.style.display = 'none';
                 document.body.style.background = 'linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb)';
                 document.body.style.backgroundSize = '400% 400%';
                 document.body.style.animation = 'smoothGradient 15s ease infinite';
+                document.body.style.backgroundAttachment = 'fixed';
             });
             video.addEventListener('loadeddata', function() {
                 console.log('Video loaded successfully');
+                // Ensure video is visible and playing
+                video.style.display = 'block';
+            });
+            video.addEventListener('play', function() {
+                console.log('Video started playing');
             });
         });
     </script>
