@@ -4,6 +4,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WPD MicroProject</title>
     <link rel="stylesheet" href="styles.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('background-video');
+            video.addEventListener('error', function() {
+                console.log('Video failed to load');
+                video.style.display = 'none';
+                document.body.style.background = 'linear-gradient(-45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb)';
+                document.body.style.backgroundSize = '400% 400%';
+                document.body.style.animation = 'smoothGradient 15s ease infinite';
+            });
+            video.addEventListener('loadeddata', function() {
+                console.log('Video loaded successfully');
+            });
+        });
+    </script>
 </head>
 
 <body>
